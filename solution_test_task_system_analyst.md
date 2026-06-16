@@ -1,4 +1,4 @@
-[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/29001550/solution_test_task_system_analyst.md)
+[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/29001836/solution_test_task_system_analyst.md)
 # Решение тестового задания (версия попроще)
 
 ## Задание 1. Анализ требований
@@ -67,7 +67,7 @@
 
 `GET /api/v1/partner-stores?city=spb`
 
-### Пример ответа
+### 200 OK — пример ответа
 
 ```json
 {
@@ -105,6 +105,40 @@
 ```
 
 По нажатию на карточку приложение открывает поле `link`.
+
+### Возможные ошибки
+
+**400 — неверный запрос** (например, передан некорректный параметр)
+```json
+{
+  "error": "bad_request",
+  "message": "Неверное значение параметра city"
+}
+```
+
+**401 — пользователь не авторизован**
+```json
+{
+  "error": "unauthorized",
+  "message": "Требуется авторизация"
+}
+```
+
+**404 — магазины не найдены** (например, для указанного города нет партнёров)
+```json
+{
+  "error": "not_found",
+  "message": "Магазины-партнёры для данного города не найдены"
+}
+```
+
+**500 — ошибка на сервере**
+```json
+{
+  "error": "internal_server_error",
+  "message": "Что-то пошло не так. Попробуйте позже"
+}
+```
 
 ---
 
