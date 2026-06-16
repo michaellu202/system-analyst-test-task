@@ -1,4 +1,4 @@
-[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/29002864/solution_test_task_system_analyst.md)
+[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/29003164/solution_test_task_system_analyst.md)
 # Решение тестового задания (версия попроще)
 
 ## Задание 1. Анализ требований
@@ -147,7 +147,8 @@ flowchart TD
     E[Мобильное приложение]
     F[БД истории уведомлений]
 
-    A --> B --> C --> D --> E --> F
+    A --> B --> C --> D --> E
+    C --> F
 ```
 
 ### Как работает
@@ -156,4 +157,5 @@ flowchart TD
 2. Событие попадает в очередь сообщений, например Kafka или RabbitMQ.
 3. Сервис уведомлений обрабатывает событие и готовит push.
 4. Push отправляется через сторонние сервисы Apple/Google.
-5. Пользователь получает уведомление, а факт отправки сохраняется в БД истории уведомлений.
+5. Сервис уведомлений сохраняет факт отправки или ошибку в БД истории уведомлений.
+6. Пользователь получает уведомление в мобильном приложении.
