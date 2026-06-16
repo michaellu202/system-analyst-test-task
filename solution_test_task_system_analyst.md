@@ -1,3 +1,4 @@
+[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/28997022/solution_test_task_system_analyst.md)
 # Решение тестового задания (Системный аналитик)
 
 ## Задание 1. Анализ требований
@@ -132,26 +133,52 @@ Headers:
 
 ## Задание 3. Верхнеуровневая архитектура PUSH
 
-```text
-[Cart Service] ----\
-[Order Service] -----\ 
-[Marketing Service] ---> [Event Bus (Kafka/RabbitMQ)] ---> [Notification Orchestrator]
-                                                           |-> rules/opt-in/quiet-hours
-                                                           |-> template selection
-                                                           |-> dedup/throttling
-                                                                       |
-                                                                       v
-                                                           [Push Adapter (APNs/FCM)]
-                                                                       |
-                                                                       v
-                                                                  [Mobile App]
-                                                                       |
-                                                                       v
-                                                              [Delivery/Open Events]
-                                                                       |
-                                                                       v
-                                                             [Analytics + Notification Log]
+### Диаграмма (Mermaid)
+
+```mermaid
+flowchart LR
+    CS[Cart Service]
+    OS[Order Service]
+    MS[Marketing Service]
+
+    EB[(Event Bus<br/>Kafka / RabbitMQ)]
+    NO[Notification Orchestrator]
+    TP[(Template Storage)]
+    UP[(User Preferences<br/>opt-in / quiet hours)]
+    DT[(Device Token Registry)]
+    PA[Push Adapter<br/>APNs / FCM]
+    MA[Mobile App]
+    EV[(Delivery/Open Events)]
+    NL[(Notification Log)]
+    BI[(Analytics / BI)]
+    DLQ[(DLQ)]
+
+    CS --> EB
+    OS --> EB
+    MS --> EB
+
+    EB --> NO
+    NO --> TP
+    NO --> UP
+    NO --> DT
+    NO --> PA
+
+    PA --> MA
+    MA --> EV
+    EV --> BI
+    EV --> NL
+
+    EB -. failed events .-> DLQ
+    NO -. retry / backoff .-> EB
 ```
+
+### Краткая логика работы
+
+1. Доменные микросервисы публикуют события в брокер.
+2. `Notification Orchestrator` обрабатывает событие, применяет правила и выбирает шаблон.
+3. Через `Push Adapter` уведомления отправляются в APNs/FCM.
+4. Мобильное приложение возвращает события доставки/открытия.
+5. Статусы сохраняются в журнал и уходят в аналитику.
 
 ### Компоненты
 
@@ -177,5 +204,5 @@ Headers:
 
 1. Добавить этот файл в репозиторий.
 2. В README дать короткое содержание по 3 заданиям.
-3. Для задания 3 добавить визуальную диаграмму (mermaid/draw.io).
+3. Для задания 3 уже добавлена визуальная диаграмма Mermaid.
 
