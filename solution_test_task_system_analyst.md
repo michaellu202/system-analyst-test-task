@@ -1,4 +1,4 @@
-[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/28997193/solution_test_task_system_analyst.md)
+[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/28997319/solution_test_task_system_analyst.md)
 # Решение тестового задания (Системный аналитик)
 
 ## Задание 1. Анализ требований
