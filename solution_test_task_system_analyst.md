@@ -1,4 +1,4 @@
-[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/29001836/solution_test_task_system_analyst.md)
+[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/29002305/solution_test_task_system_analyst.md)
 # Решение тестового задания (версия попроще)
 
 ## Задание 1. Анализ требований
@@ -121,14 +121,6 @@
 {
   "error": "unauthorized",
   "message": "Требуется авторизация"
-}
-```
-
-**404 — магазины не найдены** (например, для указанного города нет партнёров)
-```json
-{
-  "error": "not_found",
-  "message": "Магазины-партнёры для данного города не найдены"
 }
 ```
 
