@@ -1,4 +1,4 @@
-[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/28997452/solution_test_task_system_analyst.md)
+[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/29001550/solution_test_task_system_analyst.md)
 # Решение тестового задания (версия попроще)
 
 ## Задание 1. Анализ требований
@@ -74,23 +74,37 @@
   "stores": [
     {
       "id": "1",
-      "name": "Фермерский двор",
-      "description": "Свежие продукты",
-      "imageUrl": "https://cdn.example.com/store1.png",
-      "link": "https://partner1.example.com"
+      "name": "METRO",
+      "deliveryText": "Ближайшая доставка сегодня 21:00-23:00",
+      "imageUrl": "https://cdn.example.com/partners/metro.png",
+      "link": "https://metro.example.com"
     },
     {
       "id": "2",
-      "name": "Пекарня Утро",
-      "description": "Выпечка и хлеб",
-      "imageUrl": "https://cdn.example.com/store2.png",
-      "link": "https://partner2.example.com"
+      "name": "Ашан",
+      "deliveryText": "Ближайшая доставка сегодня 18:00-20:00",
+      "imageUrl": "https://cdn.example.com/partners/auchan.png",
+      "link": "https://auchan.example.com"
+    },
+    {
+      "id": "3",
+      "name": "ВкусВилл",
+      "deliveryText": "Быстрая доставка от 20 до 60 минут",
+      "imageUrl": "https://cdn.example.com/partners/vkusvill.png",
+      "link": "https://vkusvill.example.com"
+    },
+    {
+      "id": "4",
+      "name": "ВИКТОРИЯ",
+      "deliveryText": "Ближайшая доставка сегодня 17:00-19:00",
+      "imageUrl": "https://cdn.example.com/partners/victoria.png",
+      "link": "https://victoria.example.com"
     }
   ]
 }
 ```
 
-По нажатию на карточку приложения открывает поле `link`.
+По нажатию на карточку приложение открывает поле `link`.
 
 ---
 
