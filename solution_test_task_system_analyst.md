@@ -1,4 +1,4 @@
-[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/28997022/solution_test_task_system_analyst.md)
+[solution_test_task_system_analyst.md](https://github.com/user-attachments/files/28997086/solution_test_task_system_analyst.md)
 # Решение тестового задания (Системный аналитик)
 
 ## Задание 1. Анализ требований
@@ -137,21 +137,21 @@ Headers:
 
 ```mermaid
 flowchart LR
-    CS[Cart Service]
-    OS[Order Service]
-    MS[Marketing Service]
+    CS[Сервис корзины]
+    OS[Сервис заказов]
+    MS[Сервис маркетинга]
 
-    EB[(Event Bus<br/>Kafka / RabbitMQ)]
-    NO[Notification Orchestrator]
-    TP[(Template Storage)]
-    UP[(User Preferences<br/>opt-in / quiet hours)]
-    DT[(Device Token Registry)]
-    PA[Push Adapter<br/>APNs / FCM]
-    MA[Mobile App]
-    EV[(Delivery/Open Events)]
-    NL[(Notification Log)]
-    BI[(Analytics / BI)]
-    DLQ[(DLQ)]
+    EB[(Шина событий<br/>Kafka / RabbitMQ)]
+    NO[Оркестратор уведомлений]
+    TP[(Хранилище шаблонов)]
+    UP[(Пользовательские настройки<br/>согласие / тихие часы)]
+    DT[(Реестр токенов устройств)]
+    PA[Адаптер PUSH<br/>APNs / FCM]
+    MA[Мобильное приложение]
+    EV[(События доставки / открытия)]
+    NL[(Журнал уведомлений)]
+    BI[(Аналитика / BI)]
+    DLQ[(Очередь ошибок DLQ)]
 
     CS --> EB
     OS --> EB
@@ -168,15 +168,15 @@ flowchart LR
     EV --> BI
     EV --> NL
 
-    EB -. failed events .-> DLQ
-    NO -. retry / backoff .-> EB
+    EB -. неуспешные события .-> DLQ
+    NO -. повторные попытки / backoff .-> EB
 ```
 
 ### Краткая логика работы
 
 1. Доменные микросервисы публикуют события в брокер.
-2. `Notification Orchestrator` обрабатывает событие, применяет правила и выбирает шаблон.
-3. Через `Push Adapter` уведомления отправляются в APNs/FCM.
+2. `Оркестратор уведомлений` обрабатывает событие, применяет правила и выбирает шаблон.
+3. Через `Адаптер PUSH` уведомления отправляются в APNs/FCM.
 4. Мобильное приложение возвращает события доставки/открытия.
 5. Статусы сохраняются в журнал и уходят в аналитику.
 
